@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <!-- Floating Social Proof Bar -->
@@ -28,7 +29,9 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="container">
-            <div class="hero-badge animate-fade-up">⚡ Limited Time Offer - 80% OFF</div>
+            <div class="hero-badge animate-fade-up">
+                <i class="fas fa-bolt"></i> Limited Time Offer - 80% OFF
+            </div>
             <h1 class="hero-title animate-fade-up">
                 <span class="gradient-text">1500+ Viral Aesthetic</span><br>
                 Animation Reels Bundle 2026
@@ -51,7 +54,9 @@
             </div>
 
             <div class="hero-cta animate-fade-up">
-                <button class="cta-btn primary-cta">🚀 Get Instant Access - ₹199</button>
+                <button class="cta-btn primary-cta">
+                    <i class="fas fa-rocket"></i> Get Instant Access - ₹199
+                </button>
                 <p class="price-info">
                     <span class="old-price">₹1,999</span>
                     <span class="discount-badge">Save ₹1,800 (80% OFF)</span>
@@ -67,7 +72,13 @@
                     <img src="https://i.pravatar.cc/60?img=9" alt="User" class="avatar-large">
                 </div>
                 <div class="social-proof-text">
-                    <div class="rating">⭐⭐⭐⭐⭐</div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
                     <p>Trusted by 2,500+ content creators worldwide</p>
                 </div>
             </div>
@@ -78,62 +89,112 @@
     <!-- Sample Videos Grid -->
     <section class="samples" id="samples">
         <div class="container">
-            <h2 class="section-title animate-fade-up">🎬 Preview Sample Reels</h2>
+            <h2 class="section-title animate-fade-up">Preview Sample Reels</h2>
             <p class="section-subtitle animate-fade-up">High-quality aesthetic animations that get millions of views</p>
             
-            <div class="video-grid">
-                <div class="video-card animate-fade-up">
-                    <div class="video-thumbnail">
-                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&h=700&fit=crop" alt="Sample Reel" loading="lazy">
-                        <div class="play-button">▶</div>
-                        <div class="views-badge">6.4M Views</div>
+            <div class="video-scroll-container">
+                <div class="video-grid-horizontal">
+                    <div class="video-card animate-fade-up" data-video-url="https://videos.pexels.com/video-files/3252805/3252805-sd_506_960_25fps.mp4">
+                        <div class="video-wrapper">
+                            <video class="video-player" preload="metadata" loop muted playsinline poster="https://images.pexels.com/videos/3252805/free-video-3252805.jpg?auto=compress&cs=tinysrgb&w=400">
+                                <source src="https://videos.pexels.com/video-files/3252805/3252805-sd_506_960_25fps.mp4" type="video/mp4">
+                            </video>
+                            <div class="play-button-overlay">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="30" cy="30" r="30" fill="rgba(255, 255, 255, 0.1)"/>
+                                    <circle cx="30" cy="30" r="28" stroke="rgba(255, 255, 255, 0.3)" stroke-width="2"/>
+                                    <path d="M24 18L42 30L24 42V18Z" fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="views-badge">6.4M Views</div>
+                        </div>
+                        <p class="video-title">Cosmic Glow Animation</p>
                     </div>
-                    <p class="video-title">Cosmic Glow Animation</p>
-                </div>
 
-                <div class="video-card animate-fade-up">
-                    <div class="video-thumbnail">
-                        <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=400&h=700&fit=crop" alt="Sample Reel" loading="lazy">
-                        <div class="play-button">▶</div>
-                        <div class="views-badge">9.5M Views</div>
+                    <div class="video-card animate-fade-up" data-video-url="https://videos.pexels.com/video-files/3191509/3191509-sd_506_960_25fps.mp4">
+                        <div class="video-wrapper">
+                            <video class="video-player" preload="metadata" loop muted playsinline poster="https://images.pexels.com/videos/3191509/free-video-3191509.jpg?auto=compress&cs=tinysrgb&w=400">
+                                <source src="https://videos.pexels.com/video-files/3191509/3191509-sd_506_960_25fps.mp4" type="video/mp4">
+                            </video>
+                            <div class="play-button-overlay">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="30" cy="30" r="30" fill="rgba(255, 255, 255, 0.1)"/>
+                                    <circle cx="30" cy="30" r="28" stroke="rgba(255, 255, 255, 0.3)" stroke-width="2"/>
+                                    <path d="M24 18L42 30L24 42V18Z" fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="views-badge">9.5M Views</div>
+                        </div>
+                        <p class="video-title">Neon Flow Motion</p>
                     </div>
-                    <p class="video-title">Neon Flow Motion</p>
-                </div>
 
-                <div class="video-card animate-fade-up">
-                    <div class="video-thumbnail">
-                        <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&h=700&fit=crop" alt="Sample Reel" loading="lazy">
-                        <div class="play-button">▶</div>
-                        <div class="views-badge">11.4M Views</div>
+                    <div class="video-card animate-fade-up" data-video-url="https://videos.pexels.com/video-files/5377684/5377684-sd_506_960_25fps.mp4">
+                        <div class="video-wrapper">
+                            <video class="video-player" preload="metadata" loop muted playsinline poster="https://images.pexels.com/videos/5377684/free-video-5377684.jpg?auto=compress&cs=tinysrgb&w=400">
+                                <source src="https://videos.pexels.com/video-files/5377684/5377684-sd_506_960_25fps.mp4" type="video/mp4">
+                            </video>
+                            <div class="play-button-overlay">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="30" cy="30" r="30" fill="rgba(255, 255, 255, 0.1)"/>
+                                    <circle cx="30" cy="30" r="28" stroke="rgba(255, 255, 255, 0.3)" stroke-width="2"/>
+                                    <path d="M24 18L42 30L24 42V18Z" fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="views-badge">11.4M Views</div>
+                        </div>
+                        <p class="video-title">Abstract Aesthetic</p>
                     </div>
-                    <p class="video-title">Abstract Aesthetic</p>
-                </div>
 
-                <div class="video-card animate-fade-up">
-                    <div class="video-thumbnail">
-                        <img src="https://images.unsplash.com/photo-1635514569146-9a9607ecf303?w=400&h=700&fit=crop" alt="Sample Reel" loading="lazy">
-                        <div class="play-button">▶</div>
-                        <div class="views-badge">8.9M Views</div>
+                    <div class="video-card animate-fade-up" data-video-url="https://videos.pexels.com/video-files/3163534/3163534-sd_506_960_25fps.mp4">
+                        <div class="video-wrapper">
+                            <video class="video-player" preload="metadata" loop muted playsinline poster="https://images.pexels.com/videos/3163534/free-video-3163534.jpg?auto=compress&cs=tinysrgb&w=400">
+                                <source src="https://videos.pexels.com/video-files/3163534/3163534-sd_506_960_25fps.mp4" type="video/mp4">
+                            </video>
+                            <div class="play-button-overlay">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="30" cy="30" r="30" fill="rgba(255, 255, 255, 0.1)"/>
+                                    <circle cx="30" cy="30" r="28" stroke="rgba(255, 255, 255, 0.3)" stroke-width="2"/>
+                                    <path d="M24 18L42 30L24 42V18Z" fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="views-badge">8.9M Views</div>
+                        </div>
+                        <p class="video-title">Radiant Burst</p>
                     </div>
-                    <p class="video-title">Radiant Burst</p>
-                </div>
 
-                <div class="video-card animate-fade-up">
-                    <div class="video-thumbnail">
-                        <img src="https://images.unsplash.com/photo-1618556420958-7ae2e3ea5fec?w=400&h=700&fit=crop" alt="Sample Reel" loading="lazy">
-                        <div class="play-button">▶</div>
-                        <div class="views-badge">15.2M Views</div>
+                    <div class="video-card animate-fade-up" data-video-url="https://videos.pexels.com/video-files/3209828/3209828-sd_506_960_25fps.mp4">
+                        <div class="video-wrapper">
+                            <video class="video-player" preload="metadata" loop muted playsinline poster="https://images.pexels.com/videos/3209828/free-video-3209828.jpg?auto=compress&cs=tinysrgb&w=400">
+                                <source src="https://videos.pexels.com/video-files/3209828/3209828-sd_506_960_25fps.mp4" type="video/mp4">
+                            </video>
+                            <div class="play-button-overlay">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="30" cy="30" r="30" fill="rgba(255, 255, 255, 0.1)"/>
+                                    <circle cx="30" cy="30" r="28" stroke="rgba(255, 255, 255, 0.3)" stroke-width="2"/>
+                                    <path d="M24 18L42 30L24 42V18Z" fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="views-badge">15.2M Views</div>
+                        </div>
+                        <p class="video-title">Electric Energy</p>
                     </div>
-                    <p class="video-title">Electric Energy</p>
-                </div>
 
-                <div class="video-card animate-fade-up">
-                    <div class="video-thumbnail">
-                        <img src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=400&h=700&fit=crop" alt="Sample Reel" loading="lazy">
-                        <div class="play-button">▶</div>
-                        <div class="views-badge">13.8M Views</div>
+                    <div class="video-card animate-fade-up" data-video-url="https://videos.pexels.com/video-files/3191293/3191293-sd_506_960_25fps.mp4">
+                        <div class="video-wrapper">
+                            <video class="video-player" preload="metadata" loop muted playsinline poster="https://images.pexels.com/videos/3191293/free-video-3191293.jpg?auto=compress&cs=tinysrgb&w=400">
+                                <source src="https://videos.pexels.com/video-files/3191293/3191293-sd_506_960_25fps.mp4" type="video/mp4">
+                            </video>
+                            <div class="play-button-overlay">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="30" cy="30" r="30" fill="rgba(255, 255, 255, 0.1)"/>
+                                    <circle cx="30" cy="30" r="28" stroke="rgba(255, 255, 255, 0.3)" stroke-width="2"/>
+                                    <path d="M24 18L42 30L24 42V18Z" fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="views-badge">13.8M Views</div>
+                        </div>
+                        <p class="video-title">Stellar Glow</p>
                     </div>
-                    <p class="video-title">Stellar Glow</p>
                 </div>
             </div>
         </div>
@@ -142,41 +203,43 @@
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
-            <h2 class="section-title animate-fade-up">💎 What's Inside The Bundle</h2>
+            <h2 class="section-title animate-fade-up">
+                <i class="fas fa-gem"></i> What's Inside The Bundle
+            </h2>
             
             <div class="features-grid">
                 <div class="feature-card animate-fade-up">
-                    <div class="feature-icon">🎥</div>
+                    <div class="feature-icon"><i class="fas fa-video"></i></div>
                     <h3>1500+ Premium Reels</h3>
                     <p>High-quality 1080p Full HD aesthetic animation reels ready to post</p>
                 </div>
 
                 <div class="feature-card animate-fade-up">
-                    <div class="feature-icon">✨</div>
+                    <div class="feature-icon"><i class="fas fa-sparkles"></i></div>
                     <h3>2026 Latest Designs</h3>
                     <p>Fresh, modern aesthetic animations with 3D & scroll-stopping visuals</p>
                 </div>
 
                 <div class="feature-card animate-fade-up">
-                    <div class="feature-icon">📱</div>
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
                     <h3>Vertical Format</h3>
                     <p>Optimized for Instagram Reels, TikTok, YouTube Shorts & Facebook</p>
                 </div>
 
                 <div class="feature-card animate-fade-up">
-                    <div class="feature-icon">🚫</div>
+                    <div class="feature-icon"><i class="fas fa-ban"></i></div>
                     <h3>No Watermarks</h3>
                     <p>100% clean videos with zero watermarks or branding</p>
                 </div>
 
                 <div class="feature-card animate-fade-up">
-                    <div class="feature-icon">⚖️</div>
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
                     <h3>No Copyright Issues</h3>
                     <p>Royalty-free usage, safe for commercial use and reselling</p>
                 </div>
 
                 <div class="feature-card animate-fade-up">
-                    <div class="feature-icon">💼</div>
+                    <div class="feature-icon"><i class="fas fa-briefcase"></i></div>
                     <h3>PLR + MRR Rights</h3>
                     <p>Edit, rebrand, resell & keep 100% profits with full commercial rights</p>
                 </div>
@@ -187,7 +250,9 @@
     <!-- Benefits Section -->
     <section class="benefits" id="benefits">
         <div class="container">
-            <h2 class="section-title animate-fade-up">🚀 Why Choose This Bundle</h2>
+            <h2 class="section-title animate-fade-up">
+                <i class="fas fa-rocket"></i> Why Choose This Bundle
+            </h2>
             
             <div class="benefits-wrapper">
                 <div class="benefit-item animate-slide-left">
@@ -245,7 +310,9 @@
     <section class="pricing" id="pricing">
         <div class="container">
             <div class="pricing-card animate-scale-up">
-                <div class="pricing-badge">🔥 Limited Time Offer</div>
+                <div class="pricing-badge">
+                    <i class="fas fa-fire"></i> Limited Time Offer
+                </div>
                 <h2 class="pricing-title">Get Instant Access</h2>
                 <p class="pricing-subtitle">Download all 1500+ premium reels immediately. No subscription, lifetime access.</p>
                 
@@ -256,23 +323,27 @@
                 </div>
 
                 <ul class="pricing-features">
-                    <li>✅ Instant Download - Access in 2 minutes</li>
-                    <li>✅ Lifetime Access - Download anytime</li>
-                    <li>✅ PLR + MRR Rights - Resell & keep 100% profit</li>
-                    <li>✅ No Watermarks - Clean, professional videos</li>
-                    <li>✅ Copyright Free - Safe for commercial use</li>
-                    <li>✅ Google Drive - Easy access from any device</li>
+                    <li><i class="fas fa-check-circle"></i> Instant Download - Access in 2 minutes</li>
+                    <li><i class="fas fa-check-circle"></i> Lifetime Access - Download anytime</li>
+                    <li><i class="fas fa-check-circle"></i> PLR + MRR Rights - Resell & keep 100% profit</li>
+                    <li><i class="fas fa-check-circle"></i> No Watermarks - Clean, professional videos</li>
+                    <li><i class="fas fa-check-circle"></i> Copyright Free - Safe for commercial use</li>
+                    <li><i class="fas fa-check-circle"></i> Google Drive - Easy access from any device</li>
                 </ul>
 
-                <button class="cta-btn primary-cta pulse">🚀 Get Instant Access Now - ₹199</button>
+                <button class="cta-btn primary-cta pulse">
+                    <i class="fas fa-rocket"></i> Get Instant Access Now - ₹199
+                </button>
 
                 <div class="trust-badges">
-                    <div class="badge-item">🔒 256-bit SSL Encryption</div>
-                    <div class="badge-item">💳 Secure Payment</div>
-                    <div class="badge-item">⚡ Instant Delivery</div>
+                    <div class="badge-item"><i class="fas fa-lock"></i> 256-bit SSL Encryption</div>
+                    <div class="badge-item"><i class="fas fa-credit-card"></i> Secure Payment</div>
+                    <div class="badge-item"><i class="fas fa-bolt"></i> Instant Delivery</div>
                 </div>
 
-                <p class="pricing-note">⚠️ Price increases soon. This 80% discount won't last long.</p>
+                <p class="pricing-note">
+                    <i class="fas fa-exclamation-triangle"></i> Price increases soon. This 80% discount won't last long.
+                </p>
             </div>
         </div>
     </section>
@@ -280,14 +351,16 @@
     <!-- Testimonials Carousel -->
     <section class="testimonials" id="testimonials">
         <div class="container">
-            <h2 class="section-title animate-fade-up">⭐ What Creators Are Saying</h2>
+            <h2 class="section-title animate-fade-up">
+                <i class="fas fa-star"></i> What Creators Are Saying
+            </h2>
             <p class="section-subtitle animate-fade-up">Real feedback from content creators who transformed their presence</p>
             
             <div class="testimonial-carousel">
                 <div class="carousel-track">
                     <!-- First Set -->
                     <div class="testimonial-card">
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="testimonial-text">"These animation reels are very calming and aesthetic. My page looks more premium now without much effort."</p>
                         <div class="testimonial-author">
                             <img src="https://i.pravatar.cc/50?img=11" alt="Arjun" class="author-img">
@@ -299,7 +372,7 @@
                     </div>
 
                     <div class="testimonial-card">
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="testimonial-text">"Resold just a few copies and already covered the cost. Simple product, easy to sell."</p>
                         <div class="testimonial-author">
                             <img src="https://i.pravatar.cc/50?img=12" alt="Harsh" class="author-img">
@@ -311,7 +384,7 @@
                     </div>
 
                     <div class="testimonial-card">
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="testimonial-text">"I bundled this with my other products and clients liked it. Quality feels premium, not recycled content."</p>
                         <div class="testimonial-author">
                             <img src="https://i.pravatar.cc/50?img=13" alt="Aman" class="author-img">
@@ -323,7 +396,7 @@
                     </div>
 
                     <div class="testimonial-card">
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="testimonial-text">"These reels match my brand vibe perfectly. I use them for posting and also for ads."</p>
                         <div class="testimonial-author">
                             <img src="https://i.pravatar.cc/50?img=14" alt="Shivam" class="author-img">
@@ -336,7 +409,7 @@
 
                     <!-- Duplicate for smooth loop -->
                     <div class="testimonial-card">
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="testimonial-text">"These animation reels are very calming and aesthetic. My page looks more premium now without much effort."</p>
                         <div class="testimonial-author">
                             <img src="https://i.pravatar.cc/50?img=11" alt="Arjun" class="author-img">
@@ -348,7 +421,7 @@
                     </div>
 
                     <div class="testimonial-card">
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="testimonial-text">"Resold just a few copies and already covered the cost. Simple product, easy to sell."</p>
                         <div class="testimonial-author">
                             <img src="https://i.pravatar.cc/50?img=12" alt="Harsh" class="author-img">
@@ -366,41 +439,43 @@
     <!-- Who Is This For -->
     <section class="target-audience" id="audience">
         <div class="container">
-            <h2 class="section-title animate-fade-up">🎯 Perfect For</h2>
+            <h2 class="section-title animate-fade-up">
+                <i class="fas fa-bullseye"></i> Perfect For
+            </h2>
             
             <div class="audience-grid">
                 <div class="audience-card animate-fade-up">
-                    <div class="audience-icon">💸</div>
+                    <div class="audience-icon"><i class="fas fa-dollar-sign"></i></div>
                     <h3>Digital Product Sellers</h3>
                     <p>Earn passive income by reselling this bundle with full rights</p>
                 </div>
 
                 <div class="audience-card animate-fade-up">
-                    <div class="audience-icon">📸</div>
+                    <div class="audience-icon"><i class="fas fa-camera"></i></div>
                     <h3>Instagram Page Owners</h3>
                     <p>Grow your aesthetic or faceless page with viral-ready content</p>
                 </div>
 
                 <div class="audience-card animate-fade-up">
-                    <div class="audience-icon">🌟</div>
+                    <div class="audience-icon"><i class="fas fa-star"></i></div>
                     <h3>Content Creators</h3>
                     <p>Save hours of editing time with ready-to-post premium reels</p>
                 </div>
 
                 <div class="audience-card animate-fade-up">
-                    <div class="audience-icon">💼</div>
+                    <div class="audience-icon"><i class="fas fa-briefcase"></i></div>
                     <h3>Agencies & Freelancers</h3>
                     <p>Offer premium content packages to your clients</p>
                 </div>
 
                 <div class="audience-card animate-fade-up">
-                    <div class="audience-icon">🚀</div>
+                    <div class="audience-icon"><i class="fas fa-rocket"></i></div>
                     <h3>Beginners</h3>
                     <p>Start earning online without technical skills or experience</p>
                 </div>
 
                 <div class="audience-card animate-fade-up">
-                    <div class="audience-icon">🎭</div>
+                    <div class="audience-icon"><i class="fas fa-user-secret"></i></div>
                     <h3>Faceless Creators</h3>
                     <p>Build your brand without showing your face on camera</p>
                 </div>
@@ -411,7 +486,9 @@
     <!-- FAQ Section -->
     <section class="faq" id="faq">
         <div class="container">
-            <h2 class="section-title animate-fade-up">❓ Frequently Asked Questions</h2>
+            <h2 class="section-title animate-fade-up">
+                <i class="fas fa-question-circle"></i> Frequently Asked Questions
+            </h2>
             
             <div class="faq-wrapper">
                 <div class="faq-item animate-fade-up">
@@ -501,19 +578,25 @@
     <section class="final-cta" id="final-cta">
         <div class="container">
             <div class="final-cta-card animate-scale-up">
-                <h2>🌅 Turn Aesthetic Content Into<br><span class="gradient-text">Views & Income</span></h2>
+                <h2>
+                    <i class="fas fa-fire"></i> Turn Aesthetic Content Into<br><span class="gradient-text">Views & Income</span>
+                </h2>
                 <p>Join 2,500+ creators who are growing their pages and earning passive income with this bundle</p>
                 
                 <div class="cta-wrapper">
-                    <button class="cta-btn primary-cta large pulse">🚀 Get Instant Access - ₹199</button>
-                    <p class="urgency-text">⚠️ Limited time 80% discount. Price increases soon!</p>
+                    <button class="cta-btn primary-cta large pulse">
+                        <i class="fas fa-rocket"></i> Get Instant Access - ₹199
+                    </button>
+                    <p class="urgency-text">
+                        <i class="fas fa-exclamation-triangle"></i> Limited time 80% discount. Price increases soon!
+                    </p>
                 </div>
 
                 <div class="final-features">
-                    <div class="final-feature">✅ Instant Download</div>
-                    <div class="final-feature">✅ Lifetime Access</div>
-                    <div class="final-feature">✅ PLR + MRR Rights</div>
-                    <div class="final-feature">✅ No Watermarks</div>
+                    <div class="final-feature"><i class="fas fa-check"></i> Instant Download</div>
+                    <div class="final-feature"><i class="fas fa-check"></i> Lifetime Access</div>
+                    <div class="final-feature"><i class="fas fa-check"></i> PLR + MRR Rights</div>
+                    <div class="final-feature"><i class="fas fa-check"></i> No Watermarks</div>
                 </div>
             </div>
         </div>
@@ -530,8 +613,8 @@
                 
                 <div class="footer-contact">
                     <h4>Need Help?</h4>
-                    <p>📞 WhatsApp: <a href="https://wa.me/918696766944">+91-8696766944</a></p>
-                    <p>✉️ Email: dpkwmi@gmail.com</p>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/918696766944">+91-8696766944</a></p>
+                    <p><i class="fas fa-envelope"></i> Email: dpkwmi@gmail.com</p>
                 </div>
             </div>
             
