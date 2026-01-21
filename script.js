@@ -26,13 +26,22 @@ animatedElements.forEach(el => observer.observe(el));
 let lastScroll = 0;
 const floatingBar = document.getElementById('floatingBar');
 let ticking = false;
+let scrollTimeout;
 
 function updateFloatingBar() {
     const currentScroll = window.pageYOffset;
     
-    if (currentScroll > 300) {
-        floatingBar.classList.add('visible');
+    // Only show after scrolling past 400px for smoother experience
+    if (currentScroll > 400) {
+        // Clear any existing timeout
+        clearTimeout(scrollTimeout);
+        
+        // Add a small delay before showing to prevent jumpiness
+        scrollTimeout = setTimeout(() => {
+            floatingBar.classList.add('visible');
+        }, 100);
     } else {
+        clearTimeout(scrollTimeout);
         floatingBar.classList.remove('visible');
     }
     
@@ -100,7 +109,7 @@ ctaButtons.forEach(button => {
 });
 
 // ===========================
-// VIDEO CARD INTERACTIONS WITH PLAYBACK - FIXED
+// VIDEO CARD INTERACTIONS WITH PLAYBACK - ENHANCED
 // ===========================
 const videoCards = document.querySelectorAll('.video-card');
 
@@ -108,15 +117,26 @@ videoCards.forEach(card => {
     const videoPlayer = card.querySelector('.video-player');
     const playButton = card.querySelector('.play-button-overlay');
     
-    // Ensure video is ready
     if (videoPlayer) {
+        // Force reload the video
         videoPlayer.load();
         
-        card.addEventListener('click', (e) => {
+        // Add loading state
+        let isLoading = false;
+        
+        // Add click handler to the card
+        card.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             
-            // Pause all other videos first
+            if (isLoading) {
+                console.log('Video is loading, please wait...');
+                return;
+            }
+            
+            console.log('Video card clicked:', card.querySelector('.video-title').textContent);
+            
+            // Pause all other videos
             videoCards.forEach(otherCard => {
                 if (otherCard !== card) {
                     const otherVideo = otherCard.querySelector('.video-player');
@@ -128,39 +148,72 @@ videoCards.forEach(card => {
                 }
             });
             
-            // Toggle play/pause for clicked video
+            // Toggle play/pause
             if (videoPlayer.paused) {
-                // Unmute and play
+                console.log('Starting video playback...');
+                isLoading = true;
+                
+                // Start muted for better browser compatibility
                 videoPlayer.muted = false;
+                videoPlayer.volume = 0.8;
+                
                 const playPromise = videoPlayer.play();
                 
                 if (playPromise !== undefined) {
                     playPromise.then(() => {
+                        console.log('✓ Video playing successfully!');
                         card.classList.add('playing');
+                        isLoading = false;
                     }).catch(err => {
-                        console.log('Video playback error:', err);
-                        // Try playing muted if autoplay fails
+                        console.warn('Autoplay blocked, playing muted:', err.message);
+                        // Fallback to muted playback
                         videoPlayer.muted = true;
-                        videoPlayer.play().then(() => {
-                            card.classList.add('playing');
-                        });
+                        videoPlayer.play()
+                            .then(() => {
+                                console.log('✓ Video playing (muted)');
+                                card.classList.add('playing');
+                                isLoading = false;
+                            })
+                            .catch(error => {
+                                console.error('✗ Playback failed:', error);
+                                isLoading = false;
+                                alert('Unable to play video. Please try again.');
+                            });
                     });
                 }
             } else {
+                console.log('Pausing video...');
                 videoPlayer.pause();
                 card.classList.remove('playing');
             }
         });
         
-        // Reset on video end
+        // Video ended
         videoPlayer.addEventListener('ended', () => {
+            console.log('Video playback ended');
             card.classList.remove('playing');
             videoPlayer.currentTime = 0;
         });
         
-        // Handle video errors
+        // Video error handling
         videoPlayer.addEventListener('error', (e) => {
-            console.error('Video error:', e);
+            const error = videoPlayer.error;
+            console.error('Video error:', {
+                code: error?.code,
+                message: error?.message,
+                src: videoPlayer.currentSrc
+            });
+            isLoading = false;
+        });
+        
+        // Video loaded
+        videoPlayer.addEventListener('loadeddata', () => {
+            console.log('✓ Video loaded:', card.querySelector('.video-title').textContent);
+        });
+        
+        // Can play through
+        videoPlayer.addEventListener('canplaythrough', () => {
+            console.log('✓ Video ready to play:', card.querySelector('.video-title').textContent);
         });
     }
 });
