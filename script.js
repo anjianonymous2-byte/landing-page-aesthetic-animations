@@ -21,31 +21,30 @@ const animatedElements = document.querySelectorAll(
 animatedElements.forEach(el => observer.observe(el));
 
 // ===========================
-// FLOATING BAR ON SCROLL (SMOOTH)
+// FLOATING BAR ON SCROLL (SUPER SMOOTH)
 // ===========================
 let lastScroll = 0;
 const floatingBar = document.getElementById('floatingBar');
-let scrollTimeout;
+let ticking = false;
 
-window.addEventListener('scroll', () => {
+function updateFloatingBar() {
     const currentScroll = window.pageYOffset;
     
-    // Clear previous timeout
-    clearTimeout(scrollTimeout);
+    if (currentScroll > 300) {
+        floatingBar.classList.add('visible');
+    } else {
+        floatingBar.classList.remove('visible');
+    }
     
-    // Use requestAnimationFrame for smooth animation
-    requestAnimationFrame(() => {
-        if (currentScroll > 300 && currentScroll > lastScroll) {
-            floatingBar.classList.add('visible');
-        } else if (currentScroll <= 300) {
-            floatingBar.classList.remove('visible');
-        }
-    });
-    
-    // Debounce for performance
-    scrollTimeout = setTimeout(() => {
-        lastScroll = currentScroll;
-    }, 50);
+    lastScroll = currentScroll;
+    ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(updateFloatingBar);
+        ticking = true;
+    }
 }, { passive: true });
 
 // ===========================
@@ -101,7 +100,7 @@ ctaButtons.forEach(button => {
 });
 
 // ===========================
-// VIDEO CARD INTERACTIONS WITH PLAYBACK
+// VIDEO CARD INTERACTIONS WITH PLAYBACK - FIXED
 // ===========================
 const videoCards = document.querySelectorAll('.video-card');
 
@@ -109,41 +108,59 @@ videoCards.forEach(card => {
     const videoPlayer = card.querySelector('.video-player');
     const playButton = card.querySelector('.play-button-overlay');
     
-    card.addEventListener('click', (e) => {
-        e.preventDefault();
+    // Ensure video is ready
+    if (videoPlayer) {
+        videoPlayer.load();
         
-        // Pause all other videos
-        videoCards.forEach(otherCard => {
-            if (otherCard !== card) {
-                const otherVideo = otherCard.querySelector('.video-player');
-                if (otherVideo && !otherVideo.paused) {
-                    otherVideo.pause();
-                    otherVideo.currentTime = 0;
-                    otherCard.classList.remove('playing');
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Pause all other videos first
+            videoCards.forEach(otherCard => {
+                if (otherCard !== card) {
+                    const otherVideo = otherCard.querySelector('.video-player');
+                    if (otherVideo && !otherVideo.paused) {
+                        otherVideo.pause();
+                        otherVideo.currentTime = 0;
+                        otherCard.classList.remove('playing');
+                    }
                 }
-            }
-        });
-        
-        // Toggle play/pause for clicked video
-        if (videoPlayer) {
+            });
+            
+            // Toggle play/pause for clicked video
             if (videoPlayer.paused) {
-                videoPlayer.play().then(() => {
-                    card.classList.add('playing');
-                }).catch(err => {
-                    console.log('Video playback failed:', err);
-                });
+                // Unmute and play
+                videoPlayer.muted = false;
+                const playPromise = videoPlayer.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        card.classList.add('playing');
+                    }).catch(err => {
+                        console.log('Video playback error:', err);
+                        // Try playing muted if autoplay fails
+                        videoPlayer.muted = true;
+                        videoPlayer.play().then(() => {
+                            card.classList.add('playing');
+                        });
+                    });
+                }
             } else {
                 videoPlayer.pause();
                 card.classList.remove('playing');
             }
-        }
-    });
-    
-    // Reset on video end
-    if (videoPlayer) {
+        });
+        
+        // Reset on video end
         videoPlayer.addEventListener('ended', () => {
             card.classList.remove('playing');
             videoPlayer.currentTime = 0;
+        });
+        
+        // Handle video errors
+        videoPlayer.addEventListener('error', (e) => {
+            console.error('Video error:', e);
         });
     }
 });
