@@ -21,22 +21,32 @@ const animatedElements = document.querySelectorAll(
 animatedElements.forEach(el => observer.observe(el));
 
 // ===========================
-// FLOATING BAR ON SCROLL
+// FLOATING BAR ON SCROLL (SMOOTH)
 // ===========================
 let lastScroll = 0;
 const floatingBar = document.getElementById('floatingBar');
+let scrollTimeout;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
-    if (currentScroll > 300) {
-        floatingBar.classList.add('visible');
-    } else {
-        floatingBar.classList.remove('visible');
-    }
+    // Clear previous timeout
+    clearTimeout(scrollTimeout);
     
-    lastScroll = currentScroll;
-});
+    // Use requestAnimationFrame for smooth animation
+    requestAnimationFrame(() => {
+        if (currentScroll > 300 && currentScroll > lastScroll) {
+            floatingBar.classList.add('visible');
+        } else if (currentScroll <= 300) {
+            floatingBar.classList.remove('visible');
+        }
+    });
+    
+    // Debounce for performance
+    scrollTimeout = setTimeout(() => {
+        lastScroll = currentScroll;
+    }, 50);
+}, { passive: true });
 
 // ===========================
 // FAQ ACCORDION
@@ -91,28 +101,51 @@ ctaButtons.forEach(button => {
 });
 
 // ===========================
-// VIDEO CARD INTERACTIONS
+// VIDEO CARD INTERACTIONS WITH PLAYBACK
 // ===========================
 const videoCards = document.querySelectorAll('.video-card');
 
 videoCards.forEach(card => {
-    card.addEventListener('click', () => {
-        // Add pulse animation
-        card.style.animation = 'none';
-        setTimeout(() => {
-            card.style.animation = '';
-        }, 10);
+    const videoPlayer = card.querySelector('.video-player');
+    const playButton = card.querySelector('.play-button-overlay');
+    
+    card.addEventListener('click', (e) => {
+        e.preventDefault();
         
-        // Here you could open a modal with the video preview
-        // For now, we'll just add a visual feedback
-        const playButton = card.querySelector('.play-button');
-        if (playButton) {
-            playButton.style.transform = 'translate(-50%, -50%) scale(1.2)';
-            setTimeout(() => {
-                playButton.style.transform = '';
-            }, 300);
+        // Pause all other videos
+        videoCards.forEach(otherCard => {
+            if (otherCard !== card) {
+                const otherVideo = otherCard.querySelector('.video-player');
+                if (otherVideo && !otherVideo.paused) {
+                    otherVideo.pause();
+                    otherVideo.currentTime = 0;
+                    otherCard.classList.remove('playing');
+                }
+            }
+        });
+        
+        // Toggle play/pause for clicked video
+        if (videoPlayer) {
+            if (videoPlayer.paused) {
+                videoPlayer.play().then(() => {
+                    card.classList.add('playing');
+                }).catch(err => {
+                    console.log('Video playback failed:', err);
+                });
+            } else {
+                videoPlayer.pause();
+                card.classList.remove('playing');
+            }
         }
     });
+    
+    // Reset on video end
+    if (videoPlayer) {
+        videoPlayer.addEventListener('ended', () => {
+            card.classList.remove('playing');
+            videoPlayer.currentTime = 0;
+        });
+    }
 });
 
 // ===========================
